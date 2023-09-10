@@ -18,20 +18,18 @@ div { outline: 1px solid red; }
 
 .theme_snow
 {
-	font-family:arial;
+	font-family: arial;
 
-	.body
-	{
-
-	}
+	background: rgb(0, 0, 100);
 
 	.card
 	{
 		margin-top: 10px;
-		width: 800px;
-		height: 600px;
+		width: 600px;
+		height: 700px;
 		padding: 1em;
 		.centered;
+		background: rgba(255, 255, 255, 0.5);
 	}
 
 	.image
@@ -44,6 +42,74 @@ div { outline: 1px solid red; }
 	.greeting
 	{
 		width: 100%;
-		height: 350px;
+		height: 450px;
+	}
+}
+
+.theme_food
+{
+	font-family: verdana;
+
+	background: rgb(150, 0, 0);
+
+	.card
+	{
+		margin-top: 10px;
+		width: 800px;
+		height: 600px;
+		padding: 1em;
+		.centered;
+		background: rgb(200, 200, 100);
+	}
+
+	.image
+	{
+		width: 50%;
+		height: 100%;
+		float: left;
+	}
+
+	.greeting
+	{
+		width: 40%;
+		height: 100%;
+		float: right;
+		padding: 1em;
+	}
+}
+
+.theme_nativity
+{
+	font-family: arial;
+
+	background: rgb(50, 0, 0);
+
+	.card
+	{
+		margin-top: 50px;
+		width: 800px;
+		height: 600px;
+		.centered;
+		border: 1em solid rgb(0, 0, 50);
+	}
+
+	.image
+	{
+		width: 800px;
+		height: 600px;
+		position: absolute;
+	}
+
+	.greeting
+	{
+		width: 400px;
+		height: 300px;
+		position: absolute;
+		margin-left: 200px;
+		margin-top: 150px;
+		padding: 1em;
+		background-color: rgba(0, 0, 0, 0.8);
+		color: rgb(255, 255, 255);
+		border-radius: 5px;
 	}
 }
