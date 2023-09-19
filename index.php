@@ -1,8 +1,10 @@
 <?php
+	$name = (isset($_GET["name"]) ? $_GET["name"] : "Human Being");
+
 	$themes = [
-		["name" => "snow", "title" => "Seasons Greetings for a White Christmas!", "prompt" => "Generate a short paragraph as a greeting on a Christmas Card, involving snow and winter"],
-		["name" => "food", "title" => "Christmas Food And Fun", "prompt" => "Generate a short poem as a greeting on a Christmas Card, revoving around food"],
-		["name" => "nativity", "title" => "Baby Jesus was born today!", "prompt" => "Generate a short paragraph as a greeting on a Christmas Card, involving Jesus and the Nativity"]
+		["name" => "snow", "title" => "Seasons Greetings for a White Christmas, " . $name . "!", "prompt" => "Generate a short paragraph as a greeting on a Christmas Card, involving snow and winter"],
+		["name" => "food", "title" => "Dear " . $name . ", wishing you festive food and fun!", "prompt" => "Generate a short poem as a greeting on a Christmas Card, revoving around food"],
+		["name" => "nativity", "title" => "Have a blessed Christmas, " . $name . "!", "prompt" => "Generate a short paragraph as a greeting on a Christmas Card, involving Jesus and the Nativity"]
 	];
 
 	$index = rand(0, 2);
