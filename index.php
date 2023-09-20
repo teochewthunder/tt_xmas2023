@@ -3,7 +3,7 @@
 
 	$themes = [
 		["name" => "snow", "title" => "Seasons Greetings for a White Christmas, " . $name . "!", "prompt" => "Generate a short paragraph as a greeting on a Christmas Card, involving snow and winter"],
-		["name" => "food", "title" => "Dear " . $name . ", wishing you festive food and fun!", "prompt" => "Generate a short poem as a greeting on a Christmas Card, revoving around food"],
+		["name" => "food", "title" => "Dear " . $name . ", wishing you festive food and fun!", "prompt" => "Generate a short 20-line poem as a greeting on a Christmas Card, revoving around food"],
 		["name" => "nativity", "title" => "Have a blessed Christmas, " . $name . "!", "prompt" => "Generate a short paragraph as a greeting on a Christmas Card, involving Jesus and the Nativity"]
 	];
 
@@ -11,7 +11,46 @@
 
 	$content = $themes[$index]["prompt"];
 
-	//prompts
+	//api call
+	$key = "sk-xxx";
+	
+    $url = 'https://api.openai.com/v1/chat/completions';  
+    
+    $headers = array(
+        "Authorization: Bearer {$key}",
+        "OpenAI-Organization: org-FUOhDblZb1pxvaY6YylF54gl", 
+        "Content-Type: application/json"
+    );
+    
+    // Define messages
+    $messages = [];
+	$obj = [];
+    $obj["role"] = "user";
+    $obj["content"] = $themes[$index]["prompt"];
+	$messages[] = $obj;
+    	
+    // Define data
+    $data = array();
+    $data["model"] = "gpt-3.5-turbo";
+    $data["messages"] = $messages;
+    $data["max_tokens"] = 1000;
+
+    // init curl
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_POST, 1);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+	$result = curl_exec($curl);
+    if (curl_errno($curl)) {
+        echo 'Error:' . curl_error($curl);
+    } 
+    
+    curl_close($curl);	
+	
+	$result = json_decode($result);
+	$content = nl2br($result->choices[0]->message->content);
 ?>
 
 <!DOCTYPE html>
